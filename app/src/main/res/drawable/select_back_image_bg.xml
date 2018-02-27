@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/shape_back_image_focus" android:state_focused="true"/>
+    <item android:drawable="@drawable/shape_back_image_nomal" android:state_focused="false"/>
+    <item android:drawable="@drawable/shape_back_image_nomal"/>
+</selector>

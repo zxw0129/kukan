@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#5c000000"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:text="免责声明"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        />
+     <TextView
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:text="爱看电视是一款Android手机和平板上看直播的应用，视频源全部"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="150dp"
+
+        />
+     <TextView
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:layout_marginLeft="115dp"
+        android:layout_marginTop="5dp"
+        android:text="来源于互联网，由用户自行收集和更新。"
+        />
+     <TextView
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:layout_marginLeft="150dp"
+        android:text="本软件只作为技术研究使用，不做任何商业用途，用户下载后，请"
+        android:layout_marginTop="5dp"
+         />
+    <TextView
+        android:layout_width="800dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:layout_marginLeft="115dp"
+        android:text="在24小时内删除。"
+        android:layout_marginTop="5dp"
+         />
+
+</LinearLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <!--
+    app:layout_heightPercent="48.14%"
+    app:layout_widthPercent="42.18%"
+            app:layout_marginLeftPercent="4.68%"
+            app:layout_marginTopPercent="21.29%"
+    -->
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        app:layout_heightPercent="68.14%"
+        app:layout_widthPercent="62.18%"
+        >
+
+        <TextView
+            android:id="@+id/tv_tltle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_back_new_title_bg"
+            android:gravity="center"
+            android:text="推荐应用"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            app:layout_heightPercent="20.38%"
+            />
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@id/tv_tltle"
+            android:background="#99000000"
+            app:layout_heightPercent="63.46%"
+            >
+
+            <ImageView
+                android:id="@+id/iv_left_arrow"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_arrow_left"
+                app:layout_heightPercent="9.2%"
+                app:layout_marginLeftPercent="2.4%"
+                app:layout_widthPercent="5.9%"
+                />
+
+            <ImageView
+                android:id="@+id/iv_arrow_right"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:rotationY="180"
+                android:src="@mipmap/ic_arrow_left"
+                app:layout_heightPercent="9.2%"
+                app:layout_marginRightPercent="2.4%"
+                app:layout_widthPercent="5.9%"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_back"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_toLeftOf="@id/iv_arrow_right"
+                android:layout_toRightOf="@id/iv_left_arrow"
+                app:layout_marginLeftPercent="2%"
+                app:layout_marginRightPercent="2%"
+                >
+            </android.support.v7.widget.RecyclerView>
+        </android.support.percent.PercentRelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_back_new_bottom_text_bg"
+            app:layout_heightPercent="16.15%"
+            >
+
+            <TextView
+                android:id="@+id/tv_back_no"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:text="返回直播"
+                android:gravity="center"
+                android:focusable="true"
+                android:background="@drawable/select_back_text_bg"
+                />
+            <TextView
+                android:id="@+id/tv_back_Yes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:text="退出直播"
+                android:gravity="center"
+                android:focusable="true"
+                android:background="@drawable/select_back_text_bg"
+                />
+
+        </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
+</android.support.percent.PercentRelativeLayout>

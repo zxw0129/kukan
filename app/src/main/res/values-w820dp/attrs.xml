@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Proportion">
+        <attr name="widthProportion" format="float" />
+        <attr name="widthProportionType">
+            <flag name="screenWidth" value="0" />
+            <flag name="screenHeight" value="1" />
+            <flag name="anotherBorder" value="2" />
+        </attr>
+        <attr name="heightProportion" format="float" />
+        <attr name="heightProportionType">
+            <flag name="screenWidth" value="0" />
+            <flag name="screenHeight" value="1" />
+            <flag name="anotherBorder" value="2" />
+        </attr>
+        <attr name="screenOrientation">
+            <flag name="portrait" value="0" />
+            <flag name="landscape" value="1" />
+            <flag name="sensor" value="2" />
+        </attr>
+    </declare-styleable>
+
+</resources>

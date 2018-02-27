@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llt_channel_detail"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginBottom="1dp"
+    android:background="@drawable/select_change_channel"
+    android:focusable="true"
+    android:orientation="horizontal"
+    >
+    <!--android:background="@drawable/select_change_channel"-->
+    <RelativeLayout
+        android:id="@+id/rlt_channel_num"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/tv_channel_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="10dp"
+            android:text="102"
+            android:textColor="@color/color_playdetail_textview_channel"
+            android:textSize="21sp"
+            />
+
+        <ImageView
+            android:id="@+id/iv_channel_playing"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="23dp"
+            android:src="@mipmap/icon_channel_playing"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_channel_name"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/rlt_channel_num"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="东方卫视"
+        android:textColor="@color/color_playdetail_textview_channel"
+        android:textSize="21sp"/>
+
+    <com.xk.xkds.component.view.CustomMarqueeTextView
+        android:id="@+id/tv_channel_play_param"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_channel_name"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/rlt_channel_num"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="获取不到节目名称"
+        android:textColor="@color/color_playdetail_textview_channel"
+        android:textSize="16sp"/>
+</RelativeLayout>

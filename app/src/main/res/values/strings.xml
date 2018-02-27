@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">高清直播</string>
+    <string name="app_name_shafa">i看直播</string>
+    <string name="aplash_activity_testview">我是欢迎界面</string>
+    <string name="activity_main_tv_home">首页</string>
+    <string name="defined_channel_1">您可以通过以下方法进行自定义频道添加</string>
+    <string name="defined_channel_2">1.打开软件后，您可以在家里的电脑上打开屏幕下方的网址，点击上传按钮后，找到您自己整理的以txt结尾的文档，点击上传后即可在自定义频道看到您自己添加的节目</string>
+    <string name="defined_channel_3">2.您也可以用U盘把自己整理的txt文档放到指定文件夹内，重新开启app即可加载到自定义节目</string>
+    <string name="defined_channel_4">3.您可以点击下方清理自定义按钮，清理掉自定义频道</string>
+    <string name="defined_channel_all">自定义：您可以通过以下方法进行自定义频道添加1.打开软件后，您可以在家里的电脑上打开屏幕下方的网址，点击上传按钮后，找到您自己整理的以txt结尾的文档，点击上传后即可在自定义频道看到您自己添加的节目
+2.您也可以用U盘把自己整理的txt文档放到指定文件夹内，重新开启app即可加载到自定义节目
+3.您可以点击下方清理自定义按钮，清理掉自定义频道</string>
+    <string name="back_string">您要退出阿狸直播吗</string>
+    <string name="back_vision_name">当前版本: </string>
+    <string name="back_vision_name_new">最新版本: </string>
+    <string name="dialog_updata_string">更新</string>
+    <string name="vitamio_error">vitamio onErrored</string>
+    <string name="vitamio_prepared">vitamio onPrepared</string>
+    <string name="push_explain">近期每天都收到优酷委托律师关于部分电视剧授权律师函,播放期间我们屏蔽相关频道,若需观看请进入该应用观看.如果不喜欢,体验后直接卸载该应用!</string>
+
+</resources>

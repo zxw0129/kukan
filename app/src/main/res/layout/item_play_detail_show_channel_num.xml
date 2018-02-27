@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_show_channel_bg"
+    android:id="@+id/rlt_play_detail_channel_info"
+    android:paddingLeft="5dp"
+
+    >
+
+    <TextView
+        android:id="@+id/tv_play_detail_channel_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_playdetail_textview_channel"
+        android:textSize="21sp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_play_detail_channel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_play_detail_channel_number"
+        android:textColor="@color/color_playdetail_textview_channel"
+        android:textSize="21sp"
+        android:gravity="center"
+        android:layout_marginLeft="4dp"
+        android:layout_centerVertical="true"
+        android:paddingRight="5dp"
+        />
+
+</RelativeLayout>

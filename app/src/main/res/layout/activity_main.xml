@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <io.vov.vitamio.widget.VideoView
+        android:id="@+id/vv_play"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <!--错误界面 -->
+    <TextView
+        android:id="@+id/tv_play_detail_errorview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="sorry ,视频丢失了,请到QQ群 288535119反馈"
+        android:textSize="30sp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:background="@mipmap/icon_bg_error"
+        android:visibility="gone"/>
+    <!--进度条-中间-->
+    <include
+        layout="@layout/item_playdetail_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        />
+     <!--显示台号  右上角-->
+    <include
+        layout="@layout/item_play_detail_show_channel_num"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="60dp"
+        />
+      <!--设置 右边-->
+    <include
+        layout="@layout/item_seting"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        />
+    <ImageView
+        android:id="@+id/iv_shop_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        />
+    <!--换台-->
+    <TextView
+        android:id="@+id/tv_num_change_channle"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="30sp"
+        android:background="@drawable/shape_show_channel_bg"
+        android:textColor="@color/color_playdetail_textview_channel"
+        android:text="123"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:visibility="gone"
+        />
+    <!--输入数字换源-->
+    <EditText
+        android:id="@+id/et_EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:inputType="number"
+        android:textColor="#00000000"
+        android:cursorVisible="false"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
+    //签名
+    signingConfigs {
+        release {
+            keyAlias ALIAS
+            keyPassword ALIAS_PASSWORD
+            storeFile file(KEYSTORE_PATH)
+            storePassword KEYSTORE_PASSWORD
+        }
+        debug {
+            keyAlias ALIAS
+            keyPassword ALIAS_PASSWORD
+            storeFile file(KEYSTORE_PATH)
+            storePassword KEYSTORE_PASSWORD
+        }
+    }
+//    G:/code/kukantv/buildsystem/xkds.jks
+//    storeFile file('C:/Users/Administrator/Desktop/key/xkds.jks')
+    defaultConfig {
+        applicationId "com.kukantv"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 21
+        versionName "1.4.7"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
+    }
+    useLibrary 'org.apache.http.legacy'
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //编译出来的文件名
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                //这里修改apk文件名
+                def fileName = "kukantv_${defaultConfig.versionName}_${defaultConfig.versionCode}.apk"
+// def fileName  ="xksp.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    productFlavors {
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com' +
+                '.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:percent:25.3.1'
+    testCompile 'junit:junit:4.12'
+    compile project(':vitamio')
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile files('libs/mzmonitorandroidsdk.jar')
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.dangbei:sdk-euthenia:3.2.4'
+    compile files('libs/BaiduLBS_Android.jar')
+}
+//compile 'com.yanzhenjie:andserver:1.0.1'
+// compile files('libs/commons-fileupload.jar')

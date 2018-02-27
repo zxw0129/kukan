@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    >
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="#26C9DFCF"
+        >
+
+        <ImageView
+            android:id="@+id/app_push_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="150dp"
+            android:src="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:id="@+id/app_push_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="150dp"
+            android:layout_toRightOf="@id/app_push_icon"
+            android:text="优酷视频"
+            android:textColor="#99000000"
+            android:textSize="28sp"
+            />
+
+        <TextView
+            android:id="@+id/app_push_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_push_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="点击确认键或者OK键安装该应用!"
+            android:textColor="#66000000"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_push_install"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/app_push_tips"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/select_tv_push_text_bg"
+            android:gravity="center"
+            android:text="安装"
+            android:textColor="#b3FFFFFF"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_qr_explain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_push_install"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/push_explain"
+            android:textColor="#66000000"
+            android:textSize="14sp"
+            android:layout_marginRight="10dp"
+            />
+    </RelativeLayout>
+</RelativeLayout>

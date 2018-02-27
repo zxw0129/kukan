@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/crv_playdetail_other_resource"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:id="@+id/tv_resource_0"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/select_change_resource"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="资源1"
+            android:textColor="@color/color_playdetail_textview_channel"
+            android:textSize="20sp"
+           android:nextFocusLeft="@+id/tv_resource_5"
+            />
+
+        <TextView
+            android:id="@+id/tv_resource_1"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/select_change_resource"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="资源2"
+            android:textColor="@color/color_playdetail_textview_channel"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_resource_2"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/select_change_resource"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="资源3"
+            android:textColor="@color/color_playdetail_textview_channel"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_resource_3"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/select_change_resource"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="资源4"
+            android:textColor="@color/color_playdetail_textview_channel"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_resource_4"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/select_change_resource"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="资源5"
+            android:textColor="@color/color_playdetail_textview_channel"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_resource_5"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/select_change_resource"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="资源6"
+            android:textColor="@color/color_playdetail_textview_channel"
+            android:textSize="20sp"
+            android:nextFocusRight="@+id/tv_resource_0"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
+
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.xk.xkds">
+
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <!-- 获取网络状态的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!--vitamio 权限-->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- 友盟权限-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--当贝广告权限-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <!--百度定位-->
+    <!-- 这个权限用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+        android:name=".component.base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:replace="icon,label,theme"
+        >
+        <activity android:name=".component.activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!--主地址-->
+        <activity
+            android:name=".component.activity.XkdsActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.akds.CALL"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".component.activity.LiabilityActivity"/>
+        <!--集成友盟-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59ec3057734be451260008fa"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="dang bei"
+            />
+        <!--友盟推送-->
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="08dcefea136b534fcd45697a09a34d9d"/>
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="EHfWDGYAuGVOIkN2j6mAq3XOZXbHpo8h" >
+        </meta-data>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+
+        </service>
+        <!--android:value="dang bei"-->
+        <!--android:value="qibo"-->
+        <!--android:value="sha fa"-->
+        <!--android:value="mifeng"-->
+        <!--android:value="guan fang"-->
+        <!--android:value="huan shi"-->
+        <!--android:value="9i"-->
+        <!--android:value="duo le"-->
+        <!--android:value="kk"-->
+        <!--当贝更新-->
+
+    </application>
+</manifest>

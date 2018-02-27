@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/base_progress_bar"
+    android:background="#26000000"
+    android:visibility="visible"
+    >
+    <ProgressBar
+        android:id="@+id/pb_playdetail"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        />
+    <!--android:text="正在缓冲245kb/s"-->
+    <TextView
+        android:id="@+id/tv_new_speed"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:layout_below="@id/pb_playdetail"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>
