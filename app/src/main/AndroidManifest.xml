@@ -26,12 +26,12 @@
         android:name=".component.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/app_name_shafa"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:replace="icon,label,theme"
         >
-        <activity android:name=".component.activity.SplashActivity">
+        <activity android:name=".component.activity.SplashActivity1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -53,7 +53,7 @@
             android:value="59ec3057734be451260008fa"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="dang bei"
+            android:value="sha fa"
             />
         <!--友盟推送-->
         <meta-data

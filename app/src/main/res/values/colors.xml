@@ -5,4 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="color_playdetail_textview_channel">#fefefe</color>
     <color name="Dialog">#4D000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#b3b3b4</color>
+    <color name="light_grey">#d7d7d7</color>
+    <color name="btn_focus">#007aff</color>
 </resources>

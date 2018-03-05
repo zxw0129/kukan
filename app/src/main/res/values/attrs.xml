@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyTextView">
+        <attr name="enableTouchSpring" format="boolean" />
+        <attr name="enableCircleAnimation" format="boolean" />
+        <attr name="removePadding" format="boolean" />
+        <attr name="textSize" format="dimension"/>
+        <attr name="fontFamily" format="integer">
+            <enum name="fontAwesome" value="1" />
+            <enum name="fontFz" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

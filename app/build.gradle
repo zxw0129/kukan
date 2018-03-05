@@ -27,8 +27,8 @@ android {
         applicationId "com.kukantv"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 21
-        versionName "1.4.7"
+        versionCode 22
+        versionName "1.4.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
     }
@@ -83,6 +83,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.dangbei:sdk-euthenia:3.2.4'
+    compile 'com.github.zhaokaiqiang.klog:library:1.6.0'
     compile files('libs/BaiduLBS_Android.jar')
 }
 //compile 'com.yanzhenjie:andserver:1.0.1'

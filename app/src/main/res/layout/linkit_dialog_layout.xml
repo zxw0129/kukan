@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/dimen_650"
+    android:layout_height="wrap_content"
+    android:background="@null"
+    android:orientation="vertical">
+
+    <com.xk.xkds.component.view.MyTextView
+        android:id="@+id/icon_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_50"
+        android:textColor="@color/grey"
+        app:fontFamily="fontAwesome"
+        app:textSize="@dimen/dimen_60"
+        android:visibility="gone"/>
+
+    <com.xk.xkds.component.view.MyTextView
+        android:id="@+id/title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_70"
+        android:gravity="center"
+        android:textColor="@color/black"
+        app:textSize="@dimen/font_size_middle"
+        android:visibility="gone"/>
+
+    <com.xk.xkds.component.view.MyTextView
+        android:id="@+id/content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dimen_30"
+        android:gravity="center"
+        android:lineSpacingExtra="@dimen/dimen_15"
+        android:textColor="@color/black"
+        app:textSize="@dimen/font_size_default"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dimen_80"
+        android:background="@color/grey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_100"
+        android:orientation="horizontal">
+
+        <com.xk.xkds.component.view.MyTextView
+            android:id="@+id/cancel_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_action_btn_bg"
+            android:gravity="center"
+            android:text="@string/action_cancel"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/split_line"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey"
+            android:visibility="gone" />
+
+        <com.xk.xkds.component.view.MyTextView
+            android:id="@+id/ok_tv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:background="@drawable/dialog_action_btn_bg"
+            android:gravity="center"
+            android:text="@string/action_ok"
+            app:textSize="@dimen/font_size_middle"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

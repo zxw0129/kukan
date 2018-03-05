@@ -17,5 +17,9 @@
     <string name="vitamio_error">vitamio onErrored</string>
     <string name="vitamio_prepared">vitamio onPrepared</string>
     <string name="push_explain">近期每天都收到优酷委托律师关于部分电视剧授权律师函,播放期间我们屏蔽相关频道,若需观看请进入该应用观看.如果不喜欢,体验后直接卸载该应用!</string>
+    <string name="action_ok">确定</string>
+    <string name="action_cancel">取消</string>
+    <string name="no_network_tip">网络未连接，请检查网络</string>
 
+    <string name="fa_warning">\uf06a</string>
 </resources>

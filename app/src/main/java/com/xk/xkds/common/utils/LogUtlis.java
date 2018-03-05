@@ -1,7 +1,6 @@
 package com.xk.xkds.common.utils;
 
-import android.util.Log;
-
+import com.socks.library.KLog;
 import com.xk.xkds.common.base.Global;
 
 
@@ -23,7 +22,7 @@ public class LogUtlis {
     }
     public void showLogE(String str){
         if(Global.isDebug){
-            Log.e("showLog",str);
+            KLog.e("showLog",str);
         }
 
     }
