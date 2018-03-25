@@ -1,6 +1,7 @@
 package com.xk.xkds.common.utils;
 
 import com.socks.library.KLog;
+import com.socks.library.KLogUtil;
 import com.xk.xkds.common.base.Global;
 
 

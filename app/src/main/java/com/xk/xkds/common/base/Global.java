@@ -25,7 +25,7 @@ public class Global {
     public static float mScreenHeight;
     /** 屏幕密度 */
     public static float mDensity;
-    public static boolean isDebug = false;//发布出去的时候必须改成false
+    public static boolean isDebug = true;//发布出去的时候必须改成false
     public static String channel  ="guan fang" ;
     public static Handler getHandler() {
         return mHandler;

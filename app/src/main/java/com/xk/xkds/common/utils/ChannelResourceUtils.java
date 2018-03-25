@@ -1,19 +1,33 @@
 package com.xk.xkds.common.utils;
 
+import android.text.TextUtils;
+import android.util.Log;
+
 import com.socks.library.KLog;
 import com.xk.xkds.R;
 import com.xk.xkds.common.base.NetMessage;
+import com.xk.xkds.common.manager.HttpManger;
+import com.xk.xkds.common.manager.IHttpResponse;
+import com.xk.xkds.component.activity.XkdsActivity;
 import com.xk.xkds.component.base.BaseApplication;
+import com.xk.xkds.component.dialog.UpdataDialog;
 import com.xk.xkds.entity.ChannelBean;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
+
+import okhttp3.Call;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 
 /**
@@ -23,7 +37,7 @@ import java.util.TreeMap;
 
 public class ChannelResourceUtils
 {
-    private static final String URL_CHANNEL = NetMessage.URL + "channelinfo1.txt";
+    private static final String URL_CHANNEL = NetMessage.URL + "channelinfo.php";
     /**
      * 总map
      */
@@ -62,32 +76,55 @@ public class ChannelResourceUtils
             {
                 try
                 {
-                    KLog.e("start download");
-                    InputStream is = null;
-                    //自带方式
-                    //             is = Global.mContext.getResources().openRawResource(R.raw.channelinfo);
-                    ////                    //网络
-                    URL url = new URL(URL_CHANNEL);
-                    conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("GET");
-                    conn.setConnectTimeout(5000);
-                    conn.setUseCaches(false);
-                    conn.connect();
-                    int code = conn.getResponseCode();
-                    if( code == 200 )
+                    long current = System.currentTimeMillis() / 1000;
+                    KLog.e("current time:" + current);
+                    String sign = MD5Util.MD5("kukan" + current);
+                    String strUrl = URL_CHANNEL + "?sign=" + sign + "&time=" + current;
+                    HttpManger.getInstace().doGet(strUrl, new IHttpResponse()
                     {
-                        LogUtlis.getInstance().showLogE(" xxx is loadData from net");
-                        //从连接对象中获取字节输入流，
-                        is = conn.getInputStream();
-                        //注释掉 只能读网络的方式,获取源
-                    }
-                    else
-                    {
-                        //                    读文件方式
-                        LogUtlis.getInstance().showLogE("xxx is loadData from locate");
-                        is = BaseApplication.getInstance().getResources().openRawResource(R.raw.channelinfo1);
-                    }
-                    readTextFromSDcard(is);
+                        @Override
+                        public void onFailure(Call call, IOException e)
+                        {
+                            try
+                            {
+                                InputStream is = BaseApplication.getInstance().getResources().openRawResource(R.raw.channelinfo1);
+                                LogUtlis.getInstance().showLogE("get channel from local");
+                                readTextFromSDcard(is);
+                            }catch( Exception e1 )
+                            {
+                                e1.printStackTrace();
+                            }
+                            e.printStackTrace();
+                        }
+
+                        @Override
+                        public void onSuccess(Call call, Response response) throws IOException
+                        {
+                            ResponseBody body = response.body();
+                            if( body == null )
+                            {
+                                LogUtlis.getInstance().showLogE("channel return body is nulll");
+                                return;
+                            }
+                            String encryptStr = body.string();
+                            if( TextUtils.isEmpty(encryptStr) )
+                            {
+                                LogUtlis.getInstance().showLogE("channel string is null");
+                                return;
+                            }
+                            try
+                            {
+                                byte[] bytes = CommApi.decode(encryptStr,"kukan123");
+                                String decryptStr = new String(bytes);
+                                LogUtlis.getInstance().showLogE("channel list:"+decryptStr);
+                                ByteArrayInputStream insReader = new ByteArrayInputStream(decryptStr.getBytes(Charset.forName("utf8")));
+                                readTextFromSDcard(insReader);
+                            }catch( Exception e )
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
                 }catch( Exception e )
                 {
                     e.printStackTrace();
@@ -95,7 +132,6 @@ public class ChannelResourceUtils
             }
         }).start();
     }
-
     /**
      * 按行读取txt
      *

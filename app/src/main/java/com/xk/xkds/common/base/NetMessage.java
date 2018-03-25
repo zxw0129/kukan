@@ -6,7 +6,8 @@ package com.xk.xkds.common.base;
  */
 
 public class NetMessage {
-    public final static String URL = "http://139.219.57.123:8882/";
+//    public final static String URL = "http://139.219.57.123:8882/";
+    public final static String URL = "http://91mytv.com/";
     public final static String UPDATACHECK = URL + "updateinfo.txt";
     //广告
     public final static String ADURL = URL + "tcgg.txt";

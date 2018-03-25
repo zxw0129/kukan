@@ -3,6 +3,7 @@ package com.xk.xkds.common.utils;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 
 import com.xk.xkds.common.base.Global;
 import com.xk.xkds.common.base.NetMessage;
@@ -58,15 +59,24 @@ public class UpdataUtils {
         HttpManger.getInstace().doGet(NetMessage.ADURL, new IHttpResponse() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                e.printStackTrace();
             }
 
             @Override
             public void onSuccess(Call call, Response response) throws IOException {
                 ResponseBody body = response.body();
-                if (body == null) return;
+                if ( null == body )
+                {
+                    LogUtlis.getInstance().showLogE("checkADBean--->body is null");
+                    return;
+                }
                 String string = body.string();
-                if (string == null) return;
+                if ( TextUtils.isEmpty(string) )
+                {
+                    LogUtlis.getInstance().showLogE("checkADBean--->string is null");
+                    return;
+                }
+                LogUtlis.getInstance().showLogE("checkADBean--->AD infO:"+string);
                 adBean = GsonUtil.parse(string, ADBean.class);
                 LogUtlis.getInstance().showLogE(string);
             }

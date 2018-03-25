@@ -10,6 +10,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import com.xk.xkds.common.manager.HttpManger;
 import com.xk.xkds.common.manager.IHttpResponse;
 import com.xk.xkds.common.utils.AppUtil;
 import com.xk.xkds.common.utils.ChannelResourceUtils;
+import com.xk.xkds.common.utils.GetRealClientIp;
 import com.xk.xkds.common.utils.GsonUtil;
 import com.xk.xkds.common.utils.LogUtlis;
 import com.xk.xkds.common.utils.NetworkUtil;
@@ -37,7 +39,7 @@ import okhttp3.Response;
 
 import static com.xk.xkds.common.base.Global.mContext;
 
-public class SplashActivity1 extends Activity implements IHttpResponse
+public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoListener
 {
     private String TAG = "SplashActivity1";
     private final int PERMISSIONS_REQUEST_READ_PHONE_STATE = 2;
@@ -73,18 +75,6 @@ public class SplashActivity1 extends Activity implements IHttpResponse
         mIvExplain.setVisibility(View.VISIBLE);
         TextView tvVerSion = (TextView) findViewById(R.id.tv_version);
         tvVerSion.setText("版本号: " + AppUtil.getVersion());
-        return;
-    }
-
-    /**
-     * 检查当前IP对应的省份地址
-     */
-    private void checkIpLocation()
-    {
-
-        String url = "http://ip.taobao.com/service/getIpInfo2.php?ip=myip";
-        LogUtlis.getInstance().showLogE(url);
-        HttpManger.getInstace().doGet(url, this);
         return;
     }
 
@@ -174,7 +164,10 @@ public class SplashActivity1 extends Activity implements IHttpResponse
         if( connected )
         {
             //检测当前IP对应的地址
-            checkIpLocation();
+//            checkIpLocation();
+            GetRealClientIp getIpBean = new GetRealClientIp();
+            getIpBean.setListener(this);
+            new Thread(getIpBean).start();
         }
         else
         {
@@ -226,39 +219,6 @@ public class SplashActivity1 extends Activity implements IHttpResponse
         finish();
     }
 
-    @Override
-    public void onFailure(Call call, IOException e)
-    {
-        ChannelResourceUtils.getInstace().parseResource();
-        checkChannel();
-    }
-
-    @Override
-    public void onSuccess(Call call, Response response) throws IOException
-    {
-        if( response.body() != null )
-        {
-            final String string = response.body().string();
-            if( string != null )
-            {
-                LogUtlis.getInstance().showLogE(string);
-                if( string.contains("ip") )
-                {
-                    AddressEntity parse = GsonUtil.parse(string, AddressEntity.class);
-                    //空判断，数据异常
-                    if( null != parse && null != parse.getData() )
-                    {
-                        SpUtils.getInstance().saveProvince(parse.getData().getRegion());
-                    }
-                    ChannelResourceUtils.getInstace().parseResource();
-                    checkChannel();
-                    return;
-                }
-            }
-        }
-        ChannelResourceUtils.getInstace().parseResource();
-        checkChannel();
-    }
     Handler mHandler = new Handler()
     {
         @Override
@@ -268,4 +228,26 @@ public class SplashActivity1 extends Activity implements IHttpResponse
         }
     };
 
+    @Override
+    public void retData(String ret)
+    {
+        if( !TextUtils.isEmpty(ret) )
+        {
+            try
+            {
+                AddressEntity parse = GsonUtil.parse(ret, AddressEntity.class);
+                //空判断，数据异常
+                if( null != parse && null != parse.getData() )
+                {
+                    SpUtils.getInstance().saveProvince(parse.getData().getRegion());
+                }
+            }
+            catch( Exception e )
+            {
+            }
+        }
+        ChannelResourceUtils.getInstace().parseResource();
+        checkChannel();
+        return;
+    }
 }
