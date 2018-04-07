@@ -28,7 +28,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 23
-        versionName "1.4.8"
+        versionName "1.4.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
     }
