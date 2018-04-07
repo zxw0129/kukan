@@ -35,8 +35,8 @@ public class BaseApplication extends Application {
         //友盟统计
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
         //当贝广告
-//        DangbeiAdManager.init(this, "hm7Woq62QMpZpbfieV2Zn9ihlUVWuhzJJvNbbuHVvWNzAqav",
-//                "6lzUs2IAIgECGLnf", ChannelUtils.getChannelName(this));
+        DangbeiAdManager.init(this, "hm7Woq62QMpZpbfieV2Zn9ihlUVWuhzJJvNbbuHVvWNzAqav",
+                "6lzUs2IAIgECGLnf", ChannelUtils.getChannelName(this));
         /*
         百度定位功能先注销掉不使用
         //声明LocationClient类

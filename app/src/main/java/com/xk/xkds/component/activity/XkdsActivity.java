@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.socks.library.KLogUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.xk.xkds.R;
 import com.xk.xkds.common.base.Global;
@@ -283,13 +284,23 @@ public class XkdsActivity extends BaseActivity implements View.OnKeyListener,
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
+        if( null != mVideoView )
+        {
+            mVideoView.pause();
+        }
         GlideUtils.clear(this);
         super.onPause();
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy()
+    {
+        if( null != mVideoView )
+        {
+            mVideoView.stopPlayback();
+        }
         super.onDestroy();
         FileUtils.cleanList();
         ChannelResourceUtils.getInstace().cleanMap();
@@ -562,10 +573,14 @@ public class XkdsActivity extends BaseActivity implements View.OnKeyListener,
     private void startPlayVideo(String path) {
         mVideoView.stopPlayback();
         LogUtlis.getInstance().showLogE(" playpath =" + path);
-        if (path == null || path.isEmpty()) {
-            showErrorView();
+        if (path == null || path.isEmpty())
+        {
             hideProgress();
-        } else {
+            showErrorView();
+            return;
+        }
+        else
+        {
             showProgress();
             showChannelInfo();
             hideErrorView();

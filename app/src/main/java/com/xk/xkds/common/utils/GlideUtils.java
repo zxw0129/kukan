@@ -25,12 +25,20 @@ public class GlideUtils {
         {
             return;
         }
-        ((Activity)ctx).runOnUiThread(new Runnable()
+        Thread th = new Thread(new Runnable()
         {
             @Override
             public void run()
             {
                 Glide.get(BaseApplication.getInstance()).clearDiskCache();
+            }
+        });
+        th.start();
+        ((Activity)ctx).runOnUiThread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
                 Glide.get(BaseApplication.getInstance()).clearMemory();
             }
         });

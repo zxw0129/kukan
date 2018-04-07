@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.socks.library.KLog;
 import com.umeng.analytics.MobclickAgent;
 import com.xk.xkds.R;
 import com.xk.xkds.common.base.Global;
@@ -28,8 +29,8 @@ import java.util.List;
  * Created  on 2017/3/3.
  */
 
-public class BackDialog extends DialogFragment implements View.OnKeyListener, BackRecyAdapter
-        .OnItemClick {
+public class BackDialog extends DialogFragment implements BackRecyAdapter.OnItemClick
+{
     private View parent;
     private TextView mTvBack;
     private TextView mTvCancel;
@@ -38,35 +39,55 @@ public class BackDialog extends DialogFragment implements View.OnKeyListener, Ba
     private List<ADBean.ListBean> list;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NORMAL, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
     }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
-            savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setBackgroundDrawableResource(R.color.Dialog);
         parent = inflater.inflate(R.layout.dialog_back_new, container, false);
         mTvBack = (TextView) parent.findViewById(R.id.tv_back_Yes);
+
+        mTvBack.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                goback();
+            }
+        });
+
         mTvCancel = (TextView) parent.findViewById(R.id.tv_back_no);
+        mTvCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                dismiss();
+            }
+        });
+
         rvBack = (RecyclerView) parent.findViewById(R.id.rv_back);
-        mTvBack.setOnKeyListener(this);
-        mTvCancel.setOnKeyListener(this);
         initData();
         return parent;
     }
 
-    private void initData() {
-        rvBack.setLayoutManager(new LinearLayoutManager(Global.mContext, LinearLayoutManager
-                .HORIZONTAL, false));
+    private void initData()
+    {
+        rvBack.setLayoutManager(new LinearLayoutManager(Global.mContext, LinearLayoutManager.HORIZONTAL, false));
 
         ADBean adBean = UpdataUtils.getAdBean();
-        if (adBean != null) {
+        if( adBean != null )
+        {
             list = adBean.getList();
-            if (list != null) {
+            if( list != null )
+            {
                 adapter = new BackRecyAdapter(Global.mContext, list);
                 adapter.setOnItemClickListener(this);
                 rvBack.setAdapter(adapter);
@@ -76,44 +97,30 @@ public class BackDialog extends DialogFragment implements View.OnKeyListener, Ba
     }
 
     @Override
-    public void onStart() {
+    public void onStart()
+    {
         super.onStart();
         mTvBack.requestFocus();
     }
 
-    @Override
-    public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-                if (v.getId() == R.id.tv_back_Yes) {
-                    goback();
-                    return true;
-                } else if (v.getId() == R.id.tv_back_no) {
-                    dismiss();
-                    return true;
-                }
-            }
-            if (v.getId() == R.id.tv_ad_install && keyCode == KeyEvent.KEYCODE_DPAD_UP) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private void goback() {
+    private void goback()
+    {
+        dismiss();
         FinshUtil.getInstance().finishAllActivity();
     }
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(int position)
+    {
         ADBean.ListBean listBean = list.get(position);
-        if (AppUtil.isInstalled(Global.mContext, listBean.getPackageName())) {
+        if( AppUtil.isInstalled(Global.mContext, listBean.getPackageName()) )
+        {
             MobclickAgent.onEvent(Global.mContext, "back_click", listBean.getAPKName());
-            AppUtil.openApp(Global.mContext,listBean.getPackageName());
-        } else {
-            UpdataUtils.updataServer(FileManager.getApksDownloadPath(Global.mContext) + listBean
-                    .getAPKName() + ".apk", listBean.getAPKUrl());
+            AppUtil.openApp(Global.mContext, listBean.getPackageName());
+        }
+        else
+        {
+            UpdataUtils.updataServer(FileManager.getApksDownloadPath(Global.mContext) + listBean.getAPKName() + ".apk", listBean.getAPKUrl());
             Global.showToast("正在下载,请稍后");
             MobclickAgent.onEvent(Global.mContext, "back_installed", listBean.getAPKName());
         }

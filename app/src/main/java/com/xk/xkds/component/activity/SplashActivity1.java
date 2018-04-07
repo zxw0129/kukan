@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dangbei.euthenia.manager.DangbeiAdManager;
+import com.dangbei.euthenia.manager.OnAdDisplayListener;
+import com.dangbei.euthenia.ui.IAdContainer;
 import com.socks.library.KLog;
 import com.xk.xkds.R;
 import com.xk.xkds.common.base.Global;
@@ -37,6 +40,7 @@ import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Response;
 
+import static com.xk.xkds.common.base.Global.init;
 import static com.xk.xkds.common.base.Global.mContext;
 
 public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoListener
@@ -49,6 +53,7 @@ public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoL
     private ImageView mIvExplain;
     private int delayTime = 2000;
     private int timeCount;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
@@ -61,7 +66,8 @@ public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoL
         boolean checkPermission = checkPhoneStatePermission();
         if( checkPermission )
         {
-            initData();
+            dangbeiAd();
+            // initData();
         }
         else
         {
@@ -105,11 +111,11 @@ public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoL
     private boolean checkPhoneStatePermission()
     {
         boolean isPermissionsAllowed = true;
-        if( ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED )
-        {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, PERMISSIONS_REQUEST_READ_PHONE_STATE);
-            isPermissionsAllowed = false;
-        }
+        //        if( ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED )
+        //        {
+        //            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, PERMISSIONS_REQUEST_READ_PHONE_STATE);
+        //            isPermissionsAllowed = false;
+        //        }
 
         if( ContextCompat.checkSelfPermission(SplashActivity1.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED )
         {
@@ -139,18 +145,18 @@ public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoL
                 }
                 break;
             }
-            case PERMISSIONS_REQUEST_READ_PHONE_STATE:
-            {
-                if( grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED )
-                {
-                }
-                else
-                {
-                    allowed = false;
-                    showErrorExitDialog("获取盒子信息失败,请在权限设置中打开");
-                }
-                break;
-            }
+            //            case PERMISSIONS_REQUEST_READ_PHONE_STATE:
+            //            {
+            //                if( grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED )
+            //                {
+            //                }
+            //                else
+            //                {
+            //                    allowed = false;
+            //                    showErrorExitDialog("获取盒子信息失败,请在权限设置中打开");
+            //                }
+            //                break;
+            //            }
         }
         if( allowed )
         {
@@ -164,7 +170,7 @@ public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoL
         if( connected )
         {
             //检测当前IP对应的地址
-//            checkIpLocation();
+            //            checkIpLocation();
             GetRealClientIp getIpBean = new GetRealClientIp();
             getIpBean.setListener(this);
             new Thread(getIpBean).start();
@@ -212,6 +218,7 @@ public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoL
         });
 
     }
+
     private void gotoMainActivity()
     {
         Intent intent = new Intent(this, XkdsActivity.class);
@@ -241,13 +248,64 @@ public class SplashActivity1 extends Activity implements GetRealClientIp.IpInfoL
                 {
                     SpUtils.getInstance().saveProvince(parse.getData().getRegion());
                 }
-            }
-            catch( Exception e )
+            }catch( Exception e )
             {
             }
         }
         ChannelResourceUtils.getInstace().parseResource();
         checkChannel();
         return;
+    }
+
+    private void dangbeiAd()
+    {
+        IAdContainer adContainer = DangbeiAdManager.getInstance().createSplashAdContainer(this);
+        adContainer.setOnAdDisplayListener(new OnAdDisplayListener()
+        {
+            @Override
+            public void onDisplaying()
+            {
+                LogUtlis.getInstance().showLogE("open ad success");
+            }
+
+            @Override
+            public void onFailed(Throwable throwable)
+            {
+                LogUtlis.getInstance().showLogE("ad onFailed");
+                throwable.printStackTrace();
+                initData();
+            }
+
+            @Override
+            public void onFinished()
+            {
+                initData();
+                LogUtlis.getInstance().showLogE("ad onFinished");
+            }
+
+            @Override
+            public void onClosed()
+            {
+                initData();
+            }
+
+            @Override
+            public void onTerminated()
+            {
+            }
+
+            @Override
+            public void onSkipped()
+            {
+                initData();
+            }
+
+            @Override
+            public void onTriggered()
+            {
+                initData();
+            }
+        });
+        adContainer.open();
     }
 }

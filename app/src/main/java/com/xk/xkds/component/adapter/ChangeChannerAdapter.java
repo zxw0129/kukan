@@ -2,6 +2,7 @@ package com.xk.xkds.component.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -110,12 +111,20 @@ public class ChangeChannerAdapter extends RecyclerView.Adapter {
                         if (null != string) {
                             string = string.replace(mChannelList.get(position).getChannelId(),
                                     "liveBean");
-//                            LogUtlis.getInstance().showLogE(" ok ===" + string);
                             ParamBean parse = GsonUtil.parse(string, ParamBean.class);
-                            if (parse == null) return;
+                            if (parse == null)
+                            {
+                                return;
+                            }
+                            if( null == parse.getliveBean() )
+                            {
+                                return;
+                            }
                             String isLive = parse.getliveBean().getIsLive();
-                            if (isLive == null) return;
-//                            LogUtlis.getInstance().showLogE("isLive = " + isLive);
+                            if ( TextUtils.isEmpty(isLive) )
+                            {
+                                return;
+                            }
                             mHodel.tvChannelParam.setText(isLive);
                         }
                     } catch (Exception e) {

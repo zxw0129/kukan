@@ -87,53 +87,53 @@ public class SplashActivity extends BaseActivity implements IHttpResponse
         HttpManger.getInstace().doGet(url, this);
         checkChannel();
         //广告
-        //        IAdContainer adContainer = DangbeiAdManager.getInstance().createSplashAdContainer(this);
-        //        adContainer.open();
-        //        adContainer.setOnAdDisplayListener(new OnAdDisplayListener() {
-        //            @Override
-        //            public void onDisplaying() {
-        //                LogUtlis.getInstance().showLogE("open ad success");
-        //            }
-        //
-        //            @Override
-        //            public void onFailed(Throwable throwable) {
-        //                mImageview.setVisibility(View.VISIBLE);
-        //                LogUtlis.getInstance().showLogE("open ad filed" + throwable.getMessage());
-        //                throwable.printStackTrace();
-        //                delayTime = 4000;
-        //                checkChannel();
-        //                throwable.printStackTrace();
-        //            }
-        //
-        //            @Override
-        //            public void onFinished() {
-        //                delayTime = 100;
-        //                checkChannel();
-        //            }
-        //
-        //            @Override
-        //            public void onClosed() {
-        //                delayTime = 100;
-        //                checkChannel();
-        //            }
-        //
-        //            @Override
-        //            public void onTerminated() {
-        //                delayTime = 100;
-        //                checkChannel();
-        //            }
-        //
-        //            @Override
-        //            public void onSkipped() {
-        //                delayTime = 100;
-        //                checkChannel();
-        //            }
-        //
-        //            @Override
-        //            public void onTriggered() {
-        //
-        //            }
-        //        });
+//        IAdContainer adContainer = DangbeiAdManager.getInstance().createSplashAdContainer(this);
+//        adContainer.open();
+//        adContainer.setOnAdDisplayListener(new OnAdDisplayListener() {
+//            @Override
+//            public void onDisplaying() {
+//                LogUtlis.getInstance().showLogE("open ad success");
+//            }
+//
+//            @Override
+//            public void onFailed(Throwable throwable) {
+//                mImageview.setVisibility(View.VISIBLE);
+//                LogUtlis.getInstance().showLogE("open ad filed" + throwable.getMessage());
+//                throwable.printStackTrace();
+//                delayTime = 4000;
+//                checkChannel();
+//                throwable.printStackTrace();
+//            }
+//
+//            @Override
+//            public void onFinished() {
+//                delayTime = 100;
+//                checkChannel();
+//            }
+//
+//            @Override
+//            public void onClosed() {
+//                delayTime = 100;
+//                checkChannel();
+//            }
+//
+//            @Override
+//            public void onTerminated() {
+//                delayTime = 100;
+//                checkChannel();
+//            }
+//
+//            @Override
+//            public void onSkipped() {
+//                delayTime = 100;
+//                checkChannel();
+//            }
+//
+//            @Override
+//            public void onTriggered() {
+//
+//            }
+//        });
     }
 
     private void checkChannel()

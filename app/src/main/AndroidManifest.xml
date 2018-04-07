@@ -47,6 +47,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".component.activity.LiabilityActivity"/>
+
+        <receiver android:name="com.dangbei.euthenia.receiver.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+        <meta-data android:value="znds" android:name="euthenia_channel"/>
+
         <!--集成友盟-->
         <meta-data
             android:name="UMENG_APPKEY"
